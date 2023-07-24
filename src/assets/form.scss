@@ -1,0 +1,63 @@
+// --------------------------------------- form ---------------------------------------
+
+@mixin form-distribution {
+    display: flex;
+    flex-direction: column;
+}
+
+
+@mixin box-sizing {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+// --------------------------------------- modals ---------------------------------------
+
+@mixin dialog() {
+    width: 552px;
+    position: relative;
+    padding: 30px;
+    .mat-dialog-title{
+        text-align: center;
+    }
+    $width-button: 230px;
+    mat-dialog-actions{
+        display: flex;
+        justify-content: space-around;
+        margin-top: 1.5rem;
+        .success-button {
+            @include success-button();
+            width: $width-button;
+        }
+    }
+    .close-button{
+        position: absolute;
+        float: right;
+        top: -15px;
+        right: -15px;
+    }
+}
+
+// --------------------------------------- buttons ---------------------------------------
+@mixin button() {
+    border: none;
+    width: 00px;
+    height: 40px;
+    box-shadow: none;
+    border-radius: 0%
+}
+
+
+@mixin success-button($color: $primary-color) {
+    @include button;
+    color: $white;
+    background-color: $color;
+    &:hover {
+        cursor: pointer;
+        background-color: $second-color-pressed;
+    }
+}
+
+
+

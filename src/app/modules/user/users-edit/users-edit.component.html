@@ -1,0 +1,113 @@
+<div class="container">
+    <h2 mat-dialog-title>Edit User</h2>
+    <mat-dialog-content>
+      <form class="container__form" [formGroup]="userForm">
+        <mat-form-field class="container__form__input">
+          <mat-label>Username</mat-label>
+          <input type="text" matInput name="username" id="username" formControlName="username"
+                >
+                 <mat-error
+                 *ngIf="
+                   (userForm.get('username')?.touched ||
+                    userForm.get('username')?.dirty) &&
+                    userForm.get('username')?.errors &&
+                    userForm.get('username')?.invalid
+                 "
+               >
+                 <div *ngIf="userForm.get('username')?.hasError('required')" class="error">
+                   Username is required
+                 </div>
+                 <div *ngIf="userForm.get('username')?.hasError('pattern')" class="error">
+                  Username field must not contain numbers and symbols
+                 </div>
+                 <div *ngIf="userForm.get('username')?.hasError('maxlength')" class="error">
+                  Username must have a maximum of 10 characters
+                 </div>
+                 <div *ngIf="userForm.get('username')?.hasError('minlength')" class="error">
+                  Username must have a minimum of 6 characters
+                 </div>
+               </mat-error>
+        </mat-form-field>
+        
+        <mat-form-field class="container__form__input">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput formControlName="email" name="email" id="email">
+          <mat-error
+              *ngIf="
+                ( userForm.get('email')?.touched ||
+                  userForm.get('email')?.dirty) &&
+                  userForm.get('email')?.errors &&
+                  userForm.get('email')?.invalid
+              "
+            >
+              <div
+                *ngIf="userForm.get('email')?.hasError('required')"
+                class="error"
+              >
+                Email is required
+              </div>
+              <div *ngIf="userForm.get('email')?.hasError('pattern')">
+                Invalid Email
+              </div>
+          </mat-error>
+        </mat-form-field>
+      
+        <mat-form-field class="container__form__input">
+          <mat-label>Password</mat-label>
+          <input type="password" matInput formControlName="password" name="password" id="password">
+          <mat-error *ngIf="password?.touched">
+            <div *ngIf="userForm.get('password')?.hasError('required')" class="error">
+              Password is required.
+            </div>
+            <div *ngIf="userForm.get('password')?.hasError('maxlength')" class="error">
+              Password must have a maximum of 10 characters.
+            </div>
+            <div *ngIf="userForm.get('password')?.hasError('minlength')" class="error">
+              Password must have a minimum of 6 characters.
+            </div>
+            <div *ngIf="userForm.get('password')?.hasError('pattern')" class="error">
+              Password must have a number, an uppercase letter, and a lowercase letter.
+            </div>
+          </mat-error>
+        </mat-form-field>
+  
+        <mat-form-field class="container__form__input">
+          <mat-label>Confirm Password</mat-label>
+          <input type="password" matInput formControlName="confirmPassword" name="confirmPassword"
+                  id="confirmPassword">
+          <mat-error
+          *ngIf="confirmPassword?.touched">
+          <div *ngIf="userForm.get('confirmPassword')?.hasError('required')" class="error">
+            Confirm Password  is required.
+          </div>
+          <div *ngIf="userForm.get('confirmPassword')?.hasError('passwordMismatch')">
+            Passwords do not match.
+          </div>
+          <div *ngIf="userForm.get('confirmPassword')?.hasError('maxlength')" class="error">
+            Confirm Password must have a maximum of 10 characters.
+          </div>
+          <div *ngIf="userForm.get('confirmPassword')?.hasError('minlength')" class="error">
+            Confirm Password must have a minimum of 6 characters.
+          </div>
+          <div *ngIf="userForm.get('confirmPassword')?.hasError('pattern')" class="error">
+            Confirm Password must have a number, an uppercase letter, and a lowercase letter.
+          </div>
+        </mat-error>
+        </mat-form-field>
+      </form>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button mat-button mat-dialog-close class="success-button" (mousedown)="false">Cancel</button>
+        <button
+          mat-button
+          class="success-button"
+          type="submit"
+          (click)= "saveUser()"
+          >
+          Update
+      </button>
+    </mat-dialog-actions>
+    <button mat-icon-button class="close-button" [mat-dialog-close]="true" (mousedown)="false">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>

@@ -1,0 +1,31 @@
+@import './form.scss';
+// --------------------------------------- container ---------------------------------------
+@mixin container {
+    margin-inline: 15%;
+}
+
+@mixin flex-content-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+// --------------------------------------- buttons ---------------------------------------
+
+@mixin action-button($color: $second-color ) {
+    &:hover {
+        color: $color;
+    }
+}
+
+@mixin status-button($color) {
+    color: $color;
+    background-color: transparent;
+    border: 0.3px solid $color;
+    &:hover {
+        color: $white;
+        background-color: $color;
+        border-color: $color;
+    }
+}

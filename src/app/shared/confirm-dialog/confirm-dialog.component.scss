@@ -1,0 +1,14 @@
+@import '../../../assets//form.scss';
+@import '../../../assets/color.scss';
+
+
+.dialog {
+    @include dialog();
+    width: auto;
+    $width-button: 144px;
+    .success-button {
+      @include success-button;
+      width: $width-button !important;
+    }
+
+}
